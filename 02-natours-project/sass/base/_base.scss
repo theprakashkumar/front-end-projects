@@ -1,0 +1,19 @@
+// Basic definition about our entire page.
+
+/* Basic Reset */
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+}
+
+body{
+    box-sizing: border-box;
+}
