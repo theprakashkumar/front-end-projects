@@ -1,0 +1,161 @@
+.navigation{
+    &__checkbox{
+        display: none;
+    }
+
+    // This is the label of checkbox which will show and hide the navigation button.
+    &__button{
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 200;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    // This is the background of whole navigation button which will come when we will click on `navigation__button`.
+    // When the page loads we hide the background behind the `navigation__button` using position and when we click on label it will grow radially and become visible.
+    &__background{
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 100;
+        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    // This `div` will contains `navigation__list` `div` which contains all the links.
+    // This `div` on the top of `navigation__background` so we need to have higher z-index than the same.
+    // To hide the element when it loads we have to set the `opacity` and `width` to zero.
+    &__nav{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 150;
+        opacity: 0;
+        width: 0;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        backface-visibility: hidden;
+    }
+    // This is the `div` which contains all the link. 
+    // We will position it to the center of the parent `div`.
+    &__list{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+        width: 100%;
+    }
+    // Individual `li` which contains the links.
+    &__item{
+        margin: 1rem;
+    }
+    // Anchor element. 
+    &__link{
+        &:link,
+        &:visited{
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            // This will just increase the background size but as we have gradient here, it will help to get this kind of effect due to increase in background we can only see the certain part of gradient.
+            background-size: 230%;
+            
+            transition: all .4s;
+            backface-visibility: hidden;
+            // Span inside the anchor tag and this `span` contains all the link's text.
+            span{
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        } 
+        // Anchor tag when hovered or active.
+        &:hover,
+        &:active{
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+    }
+
+    // Functionality i.e. whatever happen when we click on `navigation__button`.
+
+    // We need to increase the size of `navigation__background` so that it covers the whole page.
+    &__checkbox:checked ~ &__background{
+        transform: scale(80);
+    }
+
+    // We also need to make `navigation__nav` which ultimately contains the links.
+    &__checkbox:checked ~ &__nav{
+        opacity: 1;
+        width: 100%;
+    }
+
+    // Icon: three bars on `navigation__button`.
+    // We create the middle bar bar by having  `span` inside `navigation__button` and generate other two bars using `:before` and `:after` on the middle bar.
+    &__icon{
+        position: relative;
+        margin-top: 3.5rem;
+        &,
+        &::before,
+        &::after{
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;  
+            transition: all .2s;
+        }
+
+        // Position the generated bar so that they can look the way we wanted. 
+        &::before{
+            top: -.8rem;
+        }
+        &::after{
+           top: .8rem; 
+        }
+    }
+
+    // When we hover on `navigation__button` generated bar should mover apart for hover effect.
+    &__button:hover &__icon::before{
+        top: -1rem;
+    } 
+    &__button:hover &__icon::after{
+        top: 1rem;
+    }
+
+    // When we click the `navigation__button` middle bar should become invisible.
+    &__checkbox:checked + &__button &__icon{
+        background-color: transparent;
+    }
+    // When we click the `navigation__button` both the generated bars should rotated to get the cross effect.
+    &__checkbox:checked + &__button &__icon::before{
+        top: 0;
+        transform: rotate(135deg);
+    }
+    &__checkbox:checked + &__button &__icon::after{
+        top: 0;
+        transform: rotate(-135deg);
+    }
+}
