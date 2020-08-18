@@ -16,6 +16,16 @@
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
         text-align: center;
         cursor: pointer;
+
+        @include respond(tab-port){
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond(phone){
+            top: 3.5rem;
+            right: 3.5rem;
+        }
     }
 
     // This is the background of whole navigation button which will come when we will click on `navigation__button`.
@@ -30,6 +40,16 @@
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 100;
         transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+
+        @include respond(tab-port){
+            top: 4.7rem;
+            right: 4.7rem;
+        }
+
+        @include respond(phone){
+            top: 3.7rem;
+            right: 3.7rem;
+        }
     }
 
     // This `div` will contains `navigation__list` `div` which contains all the links.

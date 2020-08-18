@@ -2,12 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <!-- This says our website should be rendered with the width of  the device, so the width of the content should the width of device so if the device is of 500px the width of our website should be 500px.-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
         <link rel="stylesheet" href="css/icon-font.css">
-        <link rel="stylesheet" href="sass/main.css">
+        <link rel="stylesheet" href="css/style.comp.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
         
         <title>Natours | Exciting tours for adventurous people</title>
@@ -86,9 +87,26 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+                            <!-- Source of image with width -->
+                            <!-- ON NEXT LINE: Approx width of image on various screen size and last the default width. -->
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large 1000w" alt="photo 1"
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                                class="composition__photo composition__photo--p1"
+                                src="img/nat-1-large.jpg">   
+
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large 1000w" alt="photo 2"
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                                class="composition__photo composition__photo--p2"
+                                src="img/nat-2-large.jpg"> 
+
+                            <img srcset="img/nat-3.jpg 300w, img/nat-3-large 1000w" alt="photo 3"
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                                class="composition__photo composition__photo--p3"
+                                src="img/nat-3-large.jpg">       
+
+                            <!-- <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                             <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3"> -->
                         </div>
                     </div>
                 </div>
@@ -119,7 +137,7 @@
                             <i class="feature-box__icon icon-basic-map"></i>
                             <h3 class="heading-tertiary u-margin-bottom-small">find you way</h3>
                             <p class="feature-box__text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit Perferendis tempor    
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit Perferendis
                             </p>
                         </div>
                     </div>
@@ -128,7 +146,7 @@
                             <i class="feature-box__icon icon-basic-heart"></i>
                             <h3 class="heading-tertiary u-margin-bottom-small">Live a Healthier life</h3>
                             <p class="feature-box__text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit Perferendis tempor    
+                                Lorem ip56.25emolor sit amet consec37.5em adipisicing elit Perferendis
                             </p>
                         </div>
                     </div>
@@ -347,8 +365,19 @@
 
         <footer class="footer">
             <div class="footer__logo-box">
-                <img src="img/logo-green-2x.png" alt="Full Logo" class="footer__logo">
+                <!-- Picture tag will choose the source according to the width and resolution. -->
+                <picture class="footer__logo">
+                    <!-- If the width is less than 37.5em this will be source for image. (Art Direction)-->
+                    <!-- Now here we have two sources of image, browser will choose according to the resolution of the devices for lower resolution it will go with the first source and for higher on it will go with second one, which is denoted by 1x(for lower resolution display) and 2x(for higher resolution display) after the image source. (Density Switching)-->
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" 
+                        media="(max-width:37.5em)">
+                    <!-- If the width is less than 37.5em this will be source for image. -->
+                    <!-- Resolution Switching -->
+                    <!-- At last we the usual `src` because if nothing working means browser does not support srcset then it can render from `src` -->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full Logo" src="img/logo-green-2x.png">
+                </picture>
             </div> 
+
             <div class="row">
                 <div class="col-1-of-2">
                     <div class="footer__navigation">
@@ -394,75 +423,3 @@
 
     </body>
 </html>
-
-
-
-<!-- 
-
-            <section class="grid-test">
-            <div class="row">
-                <div class="col-1-of-2">
-                    Col 1 of 2
-                </div>
-                <div class="col-1-of-2">
-                    Col 1 of 2
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-3">
-                    Col 1 of 3
-                </div>
-                <div class="col-1-of-3">
-                    Col 1 of 3
-                </div>
-                <div class="col-1-of-3">
-                    Col 1 of 3
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-3">
-                    Col 1 of 3
-                </div>
-                <div class="col-2-of-3">
-                    Col 2 of 3
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-                <div class="col-2-of-4">
-                    Col 2 of 4
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-4">
-                    Col 1 of 4
-                </div>
-                <div class="col-3-of-4">
-                    Col 3 of 4
-                </div>
-            </div>
-        
-        </section>
-
-
- -->
-
