@@ -5,4 +5,6 @@ This repo will have all the front-end projects that I do for any course or just 
 ### Projects:
 
 1. Todo List Using React Hooks
-2. Natours Project
+2. [Natours Project](https://dshed.csb.app/)
+3. [Trillo](https://wsvxv.csb.app/)
+4. [Nexter](https://6j0o3.csb.app/)
