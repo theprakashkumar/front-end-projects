@@ -1,0 +1,1 @@
+This project is part of [Jonas Schmedtmann's](https://codingheroes.io/) course [Advance CSS and SASS](https://www.udemy.com/course/advanced-css-and-sass/). There is no JavaScript involved in this project, everything is done by only HTML and CSS/SASS. This project is all about CSS Grid.
